@@ -1,0 +1,189 @@
+.header {
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* контекст для выпадающего мобильного меню */
+  isolation: isolate;
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-header-dark)
+  );
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.nav {
+  display: none;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  justify-content: center;
+}
+
+.navLink {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent-soft);
+}
+
+.headerCta {
+  display: none;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.headerPhone {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.headerBooking {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background var(--transition);
+}
+
+.headerBooking:hover {
+  background: var(--color-accent-hover);
+}
+
+.mobileWrap {
+  display: flex;
+  align-items: center;
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.burgerLines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 1.25rem;
+}
+
+.burgerLines span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.mobileNav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.mobileNav[data-open="true"] {
+  max-height: 70vh;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileList {
+  list-style: none;
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+}
+
+.mobileLink {
+  display: block;
+  padding: var(--space-sm) 0;
+  font-size: 1rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobileLink:hover {
+  color: var(--color-accent);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+    flex: 1;
+  }
+
+  .headerCta {
+    display: flex;
+  }
+
+  .mobileWrap {
+    display: none;
+  }
+}

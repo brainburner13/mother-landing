@@ -1,0 +1,58 @@
+.bar {
+  background: var(--color-header-dark);
+  color: var(--color-header-text);
+  font-size: 0.875rem;
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-xs) var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.schedule {
+  opacity: 0.9;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.phone {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: opacity var(--transition);
+}
+
+.phone:hover {
+  opacity: 0.85;
+}
+
+.booking {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  transition: background var(--transition);
+}
+
+.booking:hover {
+  background: var(--color-accent-hover);
+}
+
+@media (max-width: 640px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

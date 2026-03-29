@@ -1,0 +1,138 @@
+.footer {
+  background: var(--color-header-dark);
+  color: var(--color-header-text);
+  margin-top: auto;
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.top {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .top {
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.tagline {
+  font-size: 0.875rem;
+  opacity: 0.85;
+  margin-bottom: var(--space-md);
+}
+
+.social {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-header-text);
+  transition: background var(--transition);
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.navCol {
+  font-size: 0.9375rem;
+}
+
+.colTitle {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.navList a {
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+
+.navList a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contactCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.phone {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.schedule {
+  font-size: 0.875rem;
+  opacity: 0.85;
+}
+
+.booking {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background var(--transition);
+}
+
+.booking:hover {
+  background: var(--color-accent-hover);
+}
+
+.bottom {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+
+.copy {
+  margin-bottom: var(--space-xs);
+}
+
+.credits {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}

@@ -1,0 +1,41 @@
+/* Палитра и базовые токены — правьте здесь для смены «лица» сайта */
+:root {
+  /* Палитра */
+  --color-bg: #faf8f6;
+  --color-bg-elevated: #ffffff;
+  --color-bg-muted: #f0ebe6;
+  --color-text: #2c2420;
+  --color-text-muted: #6b5e56;
+  --color-accent: #8b5a4a;
+  --color-accent-hover: #6d4538;
+  --color-accent-soft: rgba(139, 90, 74, 0.12);
+  --color-border: #e5ddd6;
+  --color-success: #3d7a5c;
+  --color-header-dark: #3d2f2a;
+  --color-header-text: #f5f0eb;
+
+  /* Типографика */
+  --font-display: var(--font-display-fallback), "Georgia", serif;
+  --font-body: var(--font-body-fallback), system-ui, sans-serif;
+  --text-hero: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 2.5vw, 2rem);
+  --text-lead: 1.125rem;
+  --line-tight: 1.2;
+  --line-relaxed: 1.6;
+
+  /* Отступы и сетка */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --container: 72rem;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Тени и эффекты */
+  --shadow-sm: 0 1px 3px rgba(44, 36, 32, 0.08);
+  --shadow-md: 0 8px 30px rgba(44, 36, 32, 0.1);
+  --transition: 0.2s ease;
+}
