@@ -1,18 +1,43 @@
-/* Палитра и базовые токены — правьте здесь для смены «лица» сайта */
+/*
+ * Палитра (интерьер / Pinterest): уголь, серый, персиковый беж,
+ * терракота, глубокий петроль (teal).
+ */
 :root {
-  /* Палитра */
-  --color-bg: #faf8f6;
-  --color-bg-elevated: #ffffff;
-  --color-bg-muted: #f0ebe6;
-  --color-text: #2c2420;
-  --color-text-muted: #6b5e56;
-  --color-accent: #8b5a4a;
-  --color-accent-hover: #6d4538;
-  --color-accent-soft: rgba(139, 90, 74, 0.12);
-  --color-border: #e5ddd6;
-  --color-success: #3d7a5c;
-  --color-header-dark: #3d2f2a;
-  --color-header-text: #f5f0eb;
+  --color-bg: #f2e8de;
+  --color-bg-elevated: #faf5ef;
+  --color-bg-muted: #e8dfd4;
+  --color-text: #2b2f34;
+  --color-text-muted: #5e6770;
+  --color-accent-secondary: #8f98a3;
+  --color-accent-secondary-hover: #737c88;
+  --color-accent: #c45c2e;
+  --color-accent-hover: #a34d26;
+  --color-accent-soft: rgba(196, 92, 46, 0.18);
+  --color-heading: #c45c2e;
+  /* Заголовки секций (как тон шапки/футера) */
+  --color-section-heading: var(--color-chrome-bg);
+  --color-border: rgba(43, 47, 52, 0.12);
+  --color-success: #6d7a82;
+
+  /* Хедер / футер — петроль */
+  --color-chrome-bg: #234951;
+  --color-chrome-bg-deep: #1b3d42;
+  --color-chrome-text: #f4ede6;
+  --color-chrome-muted: rgba(244, 237, 230, 0.82);
+  --color-chrome-border: rgba(244, 237, 230, 0.14);
+  --color-chrome-hover: #e07845;
+
+  --color-header-dark: #234951;
+  --color-header-text: #f4ede6;
+  --color-header-muted: rgba(244, 237, 230, 0.78);
+
+  /* Модалка */
+  --color-modal-bg: #faf5ef;
+  --color-modal-border: rgba(43, 47, 52, 0.14);
+  --color-modal-text: #2b2f34;
+  --color-modal-muted: #5e6770;
+  --color-modal-row: #f2e8de;
+  --color-modal-icon: #8f98a3;
 
   /* Типографика */
   --font-display: var(--font-display-fallback), "Georgia", serif;
@@ -23,7 +48,6 @@
   --line-tight: 1.2;
   --line-relaxed: 1.6;
 
-  /* Отступы и сетка */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
@@ -34,8 +58,8 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* Тени и эффекты */
-  --shadow-sm: 0 1px 3px rgba(44, 36, 32, 0.08);
-  --shadow-md: 0 8px 30px rgba(44, 36, 32, 0.1);
+  --shadow-sm: 0 1px 3px rgba(43, 47, 52, 0.07);
+  --shadow-md: 0 10px 36px rgba(43, 47, 52, 0.09);
+  --shadow-hero-visual: 0 14px 40px rgba(43, 47, 52, 0.11);
   --transition: 0.2s ease;
 }

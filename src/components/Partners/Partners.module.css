@@ -2,7 +2,6 @@
   padding: var(--space-lg) var(--space-md);
   background: var(--color-bg-muted);
   border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
 }
 
 .inner {
@@ -19,7 +18,7 @@
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
+  color: var(--color-section-heading);
   font-weight: 600;
   width: 100%;
   text-align: center;
@@ -53,10 +52,12 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-muted);
-  transition: border-color var(--transition), color var(--transition);
+  transition:
+    border-color var(--transition),
+    color var(--transition);
 }
 
 a.chip:hover {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
 }

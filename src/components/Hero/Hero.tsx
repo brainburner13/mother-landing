@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { SiteConfig } from "@/types/site";
+import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import styles from "./Hero.module.css";
 
 type Props = {
@@ -18,12 +19,12 @@ export function Hero({ brand, hero }: Props) {
           </h1>
           <p className={styles.subtitle}>{hero.subtitle}</p>
           <div className={styles.ctas}>
-            <a href={hero.primaryCta.href} className={styles.btnPrimary}>
+            <ContactBookTrigger variant="heroPrimary">
               {hero.primaryCta.label}
-            </a>
-            <a href={hero.secondaryCta.href} className={styles.btnGhost}>
+            </ContactBookTrigger>
+            <ContactBookTrigger variant="heroGhost">
               {hero.secondaryCta.label}
-            </a>
+            </ContactBookTrigger>
           </div>
         </div>
         <div className={styles.visual}>

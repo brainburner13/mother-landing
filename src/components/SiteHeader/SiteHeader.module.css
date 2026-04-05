@@ -1,11 +1,7 @@
 .header {
-  background: var(--color-bg-elevated);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  /* контекст для выпадающего мобильного меню */
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
   isolation: isolate;
 }
 
@@ -30,11 +26,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--radius-md);
-  background: linear-gradient(
-    135deg,
-    var(--color-accent),
-    var(--color-header-dark)
-  );
+  background: linear-gradient(135deg, var(--color-accent-hover), var(--color-accent));
   color: #fff;
   font-family: var(--font-display);
   font-weight: 700;
@@ -48,7 +40,7 @@
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.25rem;
-  color: var(--color-text);
+  color: var(--color-chrome-text);
 }
 
 .nav {
@@ -65,42 +57,17 @@
 
 .navLink {
   font-size: 0.9375rem;
-  color: var(--color-text-muted);
+  color: var(--color-chrome-muted);
   padding: 0.25rem 0;
   border-bottom: 2px solid transparent;
-  transition: color var(--transition), border-color var(--transition);
+  transition:
+    color var(--transition),
+    border-color var(--transition);
 }
 
 .navLink:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent-soft);
-}
-
-.headerCta {
-  display: none;
-  align-items: center;
-  gap: var(--space-sm);
-  flex-shrink: 0;
-}
-
-.headerPhone {
-  font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--color-text);
-}
-
-.headerBooking {
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-accent);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  transition: background var(--transition);
-}
-
-.headerBooking:hover {
-  background: var(--color-accent-hover);
+  color: var(--color-chrome-hover);
+  border-bottom-color: var(--color-accent);
 }
 
 .mobileWrap {
@@ -115,10 +82,10 @@
   width: 2.75rem;
   height: 2.75rem;
   border: none;
-  background: var(--color-bg-muted);
+  background: rgba(255, 250, 240, 0.12);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  color: var(--color-text);
+  color: var(--color-chrome-text);
 }
 
 .burgerLines {
@@ -140,13 +107,15 @@
   left: 0;
   right: 0;
   top: 100%;
-  background: var(--color-bg-elevated);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-chrome-bg-deep);
+  border-bottom: 1px solid var(--color-chrome-border);
   box-shadow: var(--shadow-md);
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.35s ease, opacity 0.25s ease;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease;
   pointer-events: none;
 }
 
@@ -165,22 +134,18 @@
   display: block;
   padding: var(--space-sm) 0;
   font-size: 1rem;
-  color: var(--color-text);
-  border-bottom: 1px solid var(--color-border);
+  color: var(--color-chrome-text);
+  border-bottom: 1px solid var(--color-chrome-border);
 }
 
 .mobileLink:hover {
-  color: var(--color-accent);
+  color: var(--color-chrome-hover);
 }
 
 @media (min-width: 1024px) {
   .nav {
     display: block;
     flex: 1;
-  }
-
-  .headerCta {
-    display: flex;
   }
 
   .mobileWrap {

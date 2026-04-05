@@ -1,3 +1,4 @@
+import { StickyHeader } from "@/components/StickyHeader/StickyHeader";
 import { TopBar } from "@/components/TopBar/TopBar";
 import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
 import { Hero } from "@/components/Hero/Hero";
@@ -6,17 +7,16 @@ import { NewsTeaser } from "@/components/NewsTeaser/NewsTeaser";
 import { Locations } from "@/components/Locations/Locations";
 import { Partners } from "@/components/Partners/Partners";
 import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
-import { site } from "@/lib/site";
+import { getSite } from "@/lib/site";
 
 export default function Home() {
+  const site = getSite();
   return (
     <>
-      <TopBar contact={site.contact} />
-      <SiteHeader
-        brand={site.brand}
-        nav={site.header.nav}
-        contact={site.contact}
-      />
+      <StickyHeader>
+        <TopBar contact={site.contact} />
+        <SiteHeader brand={site.brand} nav={site.header.nav} />
+      </StickyHeader>
       <main>
         <Hero brand={site.brand} hero={site.hero} />
         <Services data={site.services} />
@@ -26,6 +26,7 @@ export default function Home() {
       </main>
       <SiteFooter
         brand={site.brand}
+        nav={site.header.nav}
         footer={site.footer}
         contact={site.contact}
         social={site.social}

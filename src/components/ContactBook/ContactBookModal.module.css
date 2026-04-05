@@ -1,0 +1,251 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(51, 51, 51, 0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  background: var(--color-modal-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-modal-border);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-modal-row);
+  color: var(--color-modal-text);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.close:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.close:active {
+  background: var(--color-accent-hover);
+  color: #fff;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-modal-text);
+  margin-bottom: var(--space-xs);
+  padding-right: 2.5rem;
+}
+
+.lead {
+  font-size: 0.9375rem;
+  color: var(--color-modal-muted);
+  margin-bottom: var(--space-md);
+}
+
+.messengers {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.messengerLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-modal-border);
+  background: var(--color-modal-row);
+  color: var(--color-modal-text);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.messengerLink:hover {
+  border-color: var(--color-accent);
+  background: var(--color-modal-bg);
+}
+
+.mIcon {
+  display: flex;
+  color: var(--color-modal-icon);
+}
+
+.phoneBlock {
+  text-align: center;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-modal-border);
+}
+
+.phoneLabel {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-modal-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.phone {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.phone:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Триггеры (классы совместимы с TopBar / Hero / Services / Footer) */
+.triggerTopBar {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition);
+}
+
+.triggerTopBar:hover {
+  background: var(--color-accent-hover);
+}
+
+.triggerHeroPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  transition:
+    background var(--transition),
+    transform 0.15s ease;
+}
+
+.triggerHeroPrimary:hover {
+  background: var(--color-accent-hover);
+}
+
+.triggerHeroGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+  font-weight: 600;
+  background: var(--color-bg-elevated);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  transition:
+    border-color var(--transition),
+    color var(--transition),
+    background var(--transition);
+}
+
+.triggerHeroGhost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-hover);
+  background: rgba(196, 92, 46, 0.07);
+}
+
+.triggerService {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition);
+}
+
+.triggerService:hover {
+  background: var(--color-accent-hover);
+}
+
+.triggerFooter {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition);
+}
+
+.triggerFooter:hover {
+  background: var(--color-accent-hover);
+}

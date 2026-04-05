@@ -30,7 +30,7 @@ export type LocationItem = {
 export type SocialLink = {
   label: string;
   href: string;
-  icon: "vk" | "telegram" | "youtube" | "generic";
+  icon: "vk" | "telegram" | "max" | "generic";
 };
 
 export type SiteConfig = {
@@ -79,11 +79,9 @@ export type SiteConfig = {
     items: { name: string; href?: string }[];
   };
   footer: {
-    nav: NavItem[];
     serviceLinksTitle: string;
     serviceLinks: NavItem[];
     copyright: string;
-    credits?: string;
   };
   social: SocialLink[];
 };

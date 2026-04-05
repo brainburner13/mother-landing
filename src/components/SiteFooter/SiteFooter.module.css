@@ -1,8 +1,9 @@
 .footer {
-  background: var(--color-header-dark);
-  color: var(--color-header-text);
+  background: var(--color-chrome-bg);
+  color: var(--color-chrome-text);
   margin-top: auto;
   padding: var(--space-xl) var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--color-chrome-border);
 }
 
 .inner {
@@ -28,11 +29,12 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: var(--space-xs);
+  color: var(--color-chrome-text);
 }
 
 .tagline {
   font-size: 0.875rem;
-  opacity: 0.85;
+  color: var(--color-chrome-muted);
   margin-bottom: var(--space-md);
 }
 
@@ -48,13 +50,19 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--color-header-text);
-  transition: background var(--transition);
+  background: rgba(255, 250, 240, 0.08);
+  border: 1px solid var(--color-chrome-border);
+  color: var(--color-chrome-text);
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition);
 }
 
 .socialLink:hover {
-  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--color-accent);
+  color: var(--color-chrome-hover);
+  background: rgba(196, 92, 46, 0.16);
 }
 
 .navCol {
@@ -67,7 +75,7 @@
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.9;
+  color: rgba(255, 250, 240, 0.95);
 }
 
 .navList {
@@ -78,12 +86,12 @@
 }
 
 .navList a {
-  opacity: 0.85;
-  transition: opacity var(--transition);
+  color: var(--color-chrome-muted);
+  transition: color var(--transition);
 }
 
 .navList a:hover {
-  opacity: 1;
+  color: var(--color-chrome-hover);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -97,42 +105,26 @@
 .phone {
   font-weight: 700;
   font-size: 1.125rem;
+  color: var(--color-chrome-text);
 }
 
 .schedule {
   font-size: 0.875rem;
-  opacity: 0.85;
+  color: var(--color-chrome-muted);
 }
 
-.booking {
-  display: inline-flex;
+.bookingTrigger {
   align-self: flex-start;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-accent);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.875rem;
-  transition: background var(--transition);
-}
-
-.booking:hover {
-  background: var(--color-accent-hover);
 }
 
 .bottom {
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--color-chrome-border);
   font-size: 0.8125rem;
-  opacity: 0.75;
+  color: var(--color-chrome-muted);
 }
 
 .copy {
   margin-bottom: var(--space-xs);
-}
-
-.credits {
-  font-size: 0.75rem;
-  opacity: 0.8;
 }

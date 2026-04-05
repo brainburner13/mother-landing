@@ -5,10 +5,9 @@ import styles from "./SiteHeader.module.css";
 type Props = {
   brand: SiteConfig["brand"];
   nav: NavItem[];
-  contact: SiteConfig["contact"];
 };
 
-export function SiteHeader({ brand, nav, contact }: Props) {
+export function SiteHeader({ brand, nav }: Props) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -27,19 +26,6 @@ export function SiteHeader({ brand, nav, contact }: Props) {
             ))}
           </ul>
         </nav>
-        <div className={styles.headerCta}>
-          <a className={styles.headerPhone} href={contact.phoneHref}>
-            {contact.phone}
-          </a>
-          <a
-            className={styles.headerBooking}
-            href={contact.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {contact.bookingLabel}
-          </a>
-        </div>
         <MobileNav nav={nav} />
       </div>
     </header>

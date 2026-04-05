@@ -1,15 +1,17 @@
-import type { SiteConfig } from "@/types/site";
+import type { NavItem, SiteConfig } from "@/types/site";
+import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import { SocialIcon } from "./SocialIcon";
 import styles from "./SiteFooter.module.css";
 
 type Props = {
   brand: SiteConfig["brand"];
+  nav: NavItem[];
   footer: SiteConfig["footer"];
   contact: SiteConfig["contact"];
   social: SiteConfig["social"];
 };
 
-export function SiteFooter({ brand, footer, contact, social }: Props) {
+export function SiteFooter({ brand, nav, footer, contact, social }: Props) {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -34,7 +36,7 @@ export function SiteFooter({ brand, footer, contact, social }: Props) {
           </div>
           <nav className={styles.navCol} aria-label="Нижнее меню">
             <ul className={styles.navList}>
-              {footer.nav.map((item) => (
+              {nav.map((item) => (
                 <li key={item.href + item.label}>
                   <a href={item.href}>{item.label}</a>
                 </li>
@@ -56,21 +58,13 @@ export function SiteFooter({ brand, footer, contact, social }: Props) {
               {contact.phone}
             </a>
             <p className={styles.schedule}>{contact.schedule}</p>
-            <a
-              className={styles.booking}
-              href={contact.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ContactBookTrigger variant="footer" className={styles.bookingTrigger}>
               {contact.bookingLabel}
-            </a>
+            </ContactBookTrigger>
           </div>
         </div>
         <div className={styles.bottom}>
           <p className={styles.copy}>{footer.copyright}</p>
-          {footer.credits ? (
-            <p className={styles.credits}>{footer.credits}</p>
-          ) : null}
         </div>
       </div>
     </footer>

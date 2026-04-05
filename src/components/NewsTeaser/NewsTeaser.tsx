@@ -7,13 +7,9 @@ type Props = {
 
 export function NewsTeaser({ data }: Props) {
   return (
-    <section
-      id="news"
-      className={styles.section}
-      aria-labelledby="news-title"
-    >
+    <section id="articles" className={styles.section} aria-labelledby="articles-title">
       <div className={styles.inner}>
-        <h2 id="news-title" className={styles.heading}>
+        <h2 id="articles-title" className={styles.heading}>
           {data.sectionTitle}
         </h2>
         <ul className={styles.list}>

@@ -7,11 +7,7 @@ type Props = {
 
 export function Locations({ data }: Props) {
   return (
-    <section
-      id="locations"
-      className={styles.section}
-      aria-labelledby="locations-title"
-    >
+    <section id="locations" className={styles.section} aria-labelledby="locations-title">
       <div className={styles.inner}>
         <h2 id="locations-title" className={styles.heading}>
           {data.sectionTitle}

@@ -1,0 +1,7 @@
+.shell {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-chrome-bg);
+  box-shadow: 0 4px 20px rgba(26, 74, 114, 0.35);
+}

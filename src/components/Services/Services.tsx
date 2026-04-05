@@ -1,4 +1,5 @@
 import type { SiteConfig } from "@/types/site";
+import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import styles from "./Services.module.css";
 
 type Props = {
@@ -7,11 +8,7 @@ type Props = {
 
 export function Services({ data }: Props) {
   return (
-    <section
-      id="services"
-      className={styles.section}
-      aria-labelledby="services-title"
-    >
+    <section id="services" className={styles.section} aria-labelledby="services-title">
       <div className={styles.inner}>
         <h2 id="services-title" className={styles.heading}>
           {data.sectionTitle}
@@ -26,9 +23,9 @@ export function Services({ data }: Props) {
                 <a href={item.href} className={styles.link}>
                   Подробнее
                 </a>
-                <a href={item.href} className={styles.btn}>
+                <ContactBookTrigger variant="service">
                   Узнать стоимость
-                </a>
+                </ContactBookTrigger>
               </div>
             </li>
           ))}
