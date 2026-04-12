@@ -1,13 +1,35 @@
 import type { NextConfig } from "next";
 
 /**
- * Статический экспорт для GitHub Pages (без Node-сервера).
- * Для репозитория не из корня user.github.io задайте basePath, например:
- *   basePath: "/имя-репозитория",
- *   assetPrefix: "/имя-репозитория",
+ * Базовый путь для GitHub Pages, если сайт открывается как …github.io/<репозиторий>/.
+ * В GitHub Actions переменная GITHUB_REPOSITORY задаётся автоматически (owner/repo).
+ * Локально: `cross-env GITHUB_REPOSITORY=owner/another-landing npm run build`
+ * или задайте NEXT_BASE_PATH=another-landing (имя репозитория без слэшей).
  */
+function resolveBasePath(): string {
+  const raw = process.env.NEXT_BASE_PATH?.trim();
+  if (raw) {
+    const normalized = raw.replace(/^\/+|\/+$/g, "");
+    return normalized ? `/${normalized}` : "";
+  }
+  const gh = process.env.GITHUB_REPOSITORY;
+  if (gh) {
+    const segment = gh.split("/")[1]?.trim();
+    return segment ? `/${segment}` : "";
+  }
+  return "";
+}
+
+const basePath = resolveBasePath();
+
 const nextConfig: NextConfig = {
   output: "export",
+  ...(basePath
+    ? {
+        basePath,
+        assetPrefix: `${basePath}/`,
+      }
+    : {}),
   images: {
     unoptimized: true,
     remotePatterns: [

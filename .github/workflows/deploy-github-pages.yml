@@ -33,6 +33,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # GITHUB_REPOSITORY=owner/repo задаётся GitHub автоматически — next.config.ts
+      # выставляет basePath и assetPrefix как /имя-репозитория для корректных путей к _next.
       - name: Build static export
         run: npm run build
 
