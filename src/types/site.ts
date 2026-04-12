@@ -47,7 +47,7 @@ export type PriceGroup = {
 export type SocialLink = {
   label: string;
   href: string;
-  icon: "vk" | "telegram" | "max" | "whatsapp" | "generic";
+  icon: "vk" | "telegram" | "max" | "generic";
 };
 
 export type SiteConfig = {
