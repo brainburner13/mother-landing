@@ -26,7 +26,9 @@ export function SiteHeader({ brand, nav }: Props) {
             ))}
           </ul>
         </nav>
-        <MobileNav nav={nav} />
+        <div className={styles.headerActions}>
+          <MobileNav nav={nav} />
+        </div>
       </div>
     </header>
   );

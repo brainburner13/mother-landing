@@ -25,7 +25,7 @@
   max-width: 26rem;
   background: var(--color-modal-bg);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-md) var(--space-sm);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-modal-border);
   animation: slideUp 0.25s ease;
@@ -164,6 +164,34 @@
   background: var(--color-accent-hover);
 }
 
+.triggerHeader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background var(--transition);
+}
+
+@media (min-width: 1024px) {
+  .triggerHeader {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.875rem;
+  }
+}
+
+.triggerHeader:hover {
+  background: var(--color-accent-hover);
+}
+
 .triggerHeroPrimary {
   display: inline-flex;
   align-items: center;
@@ -177,6 +205,7 @@
   cursor: pointer;
   font-family: inherit;
   font-size: 1rem;
+  text-decoration: none;
   transition:
     background var(--transition),
     transform 0.15s ease;
@@ -247,5 +276,25 @@
 }
 
 .triggerFooter:hover {
+  background: var(--color-accent-hover);
+}
+
+.triggerServicesFooter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition);
+}
+
+.triggerServicesFooter:hover {
   background: var(--color-accent-hover);
 }

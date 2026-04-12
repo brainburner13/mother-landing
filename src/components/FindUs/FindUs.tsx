@@ -1,19 +1,20 @@
 import type { SiteConfig } from "@/types/site";
-import styles from "./Locations.module.css";
+import styles from "./FindUs.module.css";
 
 type Props = {
-  data: SiteConfig["locations"];
+  title: string;
+  items: SiteConfig["locations"]["items"];
 };
 
-export function Locations({ data }: Props) {
+export function FindUs({ title, items }: Props) {
   return (
-    <section id="locations" className={styles.section} aria-labelledby="locations-title">
+    <section id="locations" className={styles.section} aria-labelledby="find-us-title">
       <div className={styles.inner}>
-        <h2 id="locations-title" className={styles.heading}>
-          {data.sectionTitle}
+        <h2 id="find-us-title" className={styles.heading}>
+          {title}
         </h2>
         <ul className={styles.grid}>
-          {data.items.map((loc) => (
+          {items.map((loc) => (
             <li key={loc.id} className={styles.card}>
               {loc.metro ? (
                 <p className={styles.metro}>

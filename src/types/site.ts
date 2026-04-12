@@ -6,7 +6,7 @@ export type NavItem = {
 export type ServiceItem = {
   id: string;
   title: string;
-  priceFrom: string;
+  priceFrom?: string;
   description: string;
   href: string;
 };
@@ -17,6 +17,9 @@ export type NewsItem = {
   excerpt: string;
   date: string;
   href: string;
+  image: { alt: string };
+  /** Полный текст статьи по абзацам; при отсутствии в модалке показывается excerpt */
+  bodyParagraphs?: string[];
 };
 
 export type LocationItem = {
@@ -27,10 +30,24 @@ export type LocationItem = {
   mapUrl?: string;
 };
 
+export type OfficePhotoCaption = {
+  alt: string;
+};
+
+export type PriceRow = {
+  name: string;
+  price: string;
+};
+
+export type PriceGroup = {
+  title: string;
+  rows: PriceRow[];
+};
+
 export type SocialLink = {
   label: string;
   href: string;
-  icon: "vk" | "telegram" | "max" | "generic";
+  icon: "vk" | "telegram" | "max" | "whatsapp" | "generic";
 };
 
 export type SiteConfig = {
@@ -55,7 +72,8 @@ export type SiteConfig = {
   };
   hero: {
     title: string;
-    subtitle: string;
+    /** Текст над адресами (станциями метро) */
+    intro: string;
     primaryCta: { label: string; href: string };
     secondaryCta: { label: string; href: string };
     image?: { src: string; alt: string };
@@ -66,22 +84,25 @@ export type SiteConfig = {
   };
   news: {
     sectionTitle: string;
-    allNewsLabel: string;
-    allNewsHref: string;
     items: NewsItem[];
   };
   locations: {
-    sectionTitle: string;
+    /** Подписи к фото кабинетов в карусели первого экрана */
+    photos: OfficePhotoCaption[];
     items: LocationItem[];
   };
-  partners: {
-    title: string;
-    items: { name: string; href?: string }[];
+  findUs: {
+    sectionTitle: string;
+  };
+  priceList: {
+    sectionTitle: string;
+    groups: PriceGroup[];
   };
   footer: {
     serviceLinksTitle: string;
     serviceLinks: NavItem[];
-    copyright: string;
+    copyrightSince: number;
+    copyrightRest: string;
   };
   social: SocialLink[];
 };

@@ -4,14 +4,16 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { useContactBook } from "./ContactBookProvider";
 import modalStyles from "./ContactBookModal.module.css";
 
-type Variant = "topBar" | "heroPrimary" | "heroGhost" | "service" | "footer";
+type Variant = "topBar" | "header" | "heroPrimary" | "heroGhost" | "service" | "footer" | "servicesFooter";
 
 const variantClass: Record<Variant, string> = {
   topBar: modalStyles.triggerTopBar,
+  header: modalStyles.triggerHeader,
   heroPrimary: modalStyles.triggerHeroPrimary,
   heroGhost: modalStyles.triggerHeroGhost,
   service: modalStyles.triggerService,
   footer: modalStyles.triggerFooter,
+  servicesFooter: modalStyles.triggerServicesFooter,
 };
 
 type Props = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type" | "onClick"> & {

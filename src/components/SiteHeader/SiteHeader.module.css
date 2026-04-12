@@ -6,13 +6,21 @@
 }
 
 .inner {
+  position: relative;
   max-width: var(--container);
   margin: 0 auto;
   padding: var(--space-sm) var(--space-md);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
+  gap: var(--space-sm);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -52,7 +60,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs) var(--space-md);
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .navLink {
@@ -86,20 +94,60 @@
   border-radius: var(--radius-sm);
   cursor: pointer;
   color: var(--color-chrome-text);
+  transition: background var(--transition);
+}
+
+.burger:hover {
+  background: rgba(255, 250, 240, 0.18);
 }
 
 .burgerLines {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  position: relative;
   width: 1.25rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 
 .burgerLines span {
-  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
   height: 2px;
   background: currentColor;
   border-radius: 1px;
+  transform-origin: center;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Полосы: 2px + зазор 5px + 2px + 5px + 2px = 16px → центр на 7px */
+.burgerLines span:nth-child(1) {
+  top: 0;
+}
+
+.burgerLines span:nth-child(2) {
+  top: 7px;
+}
+
+.burgerLines span:nth-child(3) {
+  top: 14px;
+}
+
+.burger[data-open="true"] .burgerLines span:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+
+.burger[data-open="true"] .burgerLines span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.burger[data-open="true"] .burgerLines span:nth-child(3) {
+  top: 7px;
+  transform: rotate(-45deg);
 }
 
 .mobileNav {
@@ -107,6 +155,8 @@
   left: 0;
   right: 0;
   top: 100%;
+  width: 100%;
+  box-sizing: border-box;
   background: var(--color-chrome-bg-deep);
   border-bottom: 1px solid var(--color-chrome-border);
   box-shadow: var(--shadow-md);

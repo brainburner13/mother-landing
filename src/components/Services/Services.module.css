@@ -17,40 +17,74 @@
   color: var(--color-section-heading);
 }
 
+/* До 4 карточек в ряд; неполная строка (3 из 7) центрируется за счёт flex + justify-content */
 .grid {
   list-style: none;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-md);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 960px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .card {
+  box-sizing: border-box;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--space-md);
   background: var(--color-bg-elevated);
   display: flex;
   flex-direction: column;
+  flex: 0 1 100%;
+  width: 100%;
+  max-width: 22rem;
+  min-height: 100%;
+  overflow: hidden;
   transition:
     box-shadow var(--transition),
     border-color var(--transition);
 }
 
+@media (min-width: 480px) {
+  .card {
+    flex: 0 1 calc(50% - var(--space-md) / 2);
+    max-width: calc(50% - var(--space-md) / 2);
+  }
+}
+
+@media (min-width: 720px) {
+  .card {
+    flex: 0 1 calc(33.333% - var(--space-md) * 2 / 3);
+    max-width: calc(33.333% - var(--space-md) * 2 / 3);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    flex: 0 1 calc(25% - var(--space-md) * 3 / 4);
+    max-width: calc(25% - var(--space-md) * 3 / 4);
+  }
+}
+
 .card:hover {
   box-shadow: var(--shadow-md);
   border-color: transparent;
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-muted);
+}
+
+.thumbImg {
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .cardTitle {
@@ -76,9 +110,13 @@
 }
 
 .cardActions {
+  margin-top: auto;
+}
+
+.sectionCta {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
+  justify-content: center;
+  margin-top: var(--space-xl);
 }
 
 .link {

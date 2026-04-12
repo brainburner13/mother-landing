@@ -19,6 +19,7 @@ export function MobileNav({ nav }: Props) {
         className={styles.burger}
         aria-expanded={open}
         aria-controls={panelId}
+        data-open={open ? "true" : "false"}
         onClick={() => setOpen((v) => !v)}
       >
         <span className={styles.burgerLines} aria-hidden>
