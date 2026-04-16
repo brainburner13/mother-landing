@@ -17,7 +17,7 @@
 
 .viewportHero {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(196, 92, 46, 0.38);
+  border: 1px solid rgba(240, 162, 30, 0.4);
   box-shadow: var(--shadow-hero-visual);
 }
 
@@ -83,7 +83,7 @@
 .arrow:hover {
   border-color: var(--color-accent);
   color: var(--color-accent-hover);
-  background: rgba(196, 92, 46, 0.08);
+  background: rgba(240, 162, 30, 0.1);
 }
 
 .dots {

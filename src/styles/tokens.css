@@ -1,46 +1,47 @@
 /*
- * Палитра (интерьер / Pinterest): уголь, серый, персиковый беж,
- * терракота, глубокий петроль (teal).
+ * Палитра логотипа: тёмный сине-графитовый, фирменный оранжевый,
+ * светлый нейтральный для текста и подложек.
  */
 :root {
-  --color-bg: #f2e8de;
-  --color-bg-elevated: #faf5ef;
-  --color-bg-muted: #e8dfd4;
-  --color-text: #2b2f34;
-  --color-text-muted: #5e6770;
-  --color-accent-secondary: #8f98a3;
-  --color-accent-secondary-hover: #737c88;
-  --color-accent: #c45c2e;
-  --color-accent-hover: #a34d26;
-  --color-accent-soft: rgba(196, 92, 46, 0.18);
-  --color-heading: #c45c2e;
+  --color-bg: #edf1f7;
+  --color-bg-elevated: #f8fafd;
+  --color-bg-muted: #e2e9f2;
+  --color-text: #1f2d43;
+  --color-text-muted: #56667d;
+  --color-accent-secondary: #6f84a3;
+  --color-accent-secondary-hover: #5f7391;
+  --color-accent: #f0a21e;
+  --color-accent-hover: #d88d10;
+  --color-accent-soft: rgba(240, 162, 30, 0.2);
+  --color-accent-gold-soft: rgba(240, 162, 30, 0.12);
+  --color-heading: #24344d;
   /* Заголовки секций (как тон шапки/футера) */
   --color-section-heading: var(--color-chrome-bg);
-  --color-border: rgba(43, 47, 52, 0.12);
-  --color-success: #6d7a82;
+  --color-border: rgba(36, 52, 77, 0.16);
+  --color-success: #34537a;
 
-  /* Хедер / футер — петроль */
-  --color-chrome-bg: #234951;
-  --color-chrome-bg-deep: #1b3d42;
-  --color-chrome-text: #f4ede6;
-  --color-chrome-muted: rgba(244, 237, 230, 0.82);
-  --color-chrome-border: rgba(244, 237, 230, 0.14);
-  --color-chrome-hover: #e07845;
+  /* Хедер / футер — как фон лого */
+  --color-chrome-bg: #24344d;
+  --color-chrome-bg-deep: #1b2a40;
+  --color-chrome-text: #eceff4;
+  --color-chrome-muted: rgba(236, 239, 244, 0.82);
+  --color-chrome-border: rgba(236, 239, 244, 0.2);
+  --color-chrome-hover: #f0a21e;
 
-  --color-header-dark: #234951;
-  --color-header-text: #f4ede6;
-  --color-header-muted: rgba(244, 237, 230, 0.78);
+  --color-header-dark: #24344d;
+  --color-header-text: #eceff4;
+  --color-header-muted: rgba(236, 239, 244, 0.78);
 
   /* Модалка */
-  --color-modal-bg: #faf5ef;
-  --color-modal-border: rgba(43, 47, 52, 0.14);
-  --color-modal-text: #2b2f34;
-  --color-modal-muted: #5e6770;
-  --color-modal-row: #f2e8de;
-  --color-modal-icon: #8f98a3;
+  --color-modal-bg: #f8fafd;
+  --color-modal-border: rgba(36, 52, 77, 0.16);
+  --color-modal-text: #1f2d43;
+  --color-modal-muted: #56667d;
+  --color-modal-row: #e9eff7;
+  --color-modal-icon: #7389a8;
 
   /* Типографика */
-  --font-display: var(--font-display-fallback), "Georgia", serif;
+  --font-display: var(--font-display-fallback), "Noto Sans", "Trebuchet MS", sans-serif;
   --font-body: var(--font-body-fallback), system-ui, sans-serif;
   --text-hero: clamp(2rem, 4vw, 3rem);
   --text-h2: clamp(1.5rem, 2.5vw, 2rem);

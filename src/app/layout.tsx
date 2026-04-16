@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Mulish, Poiret_One } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { ContactBookProvider } from "@/components/ContactBook/ContactBookProvider";
 import { getSite } from "@/lib/site";
 
-const display = Poiret_One({
+const display = Noto_Sans({
   subsets: ["latin", "cyrillic"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display-fallback",
   display: "swap",
 });
 
-const body = Mulish({
+const body = Noto_Sans({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body-fallback",

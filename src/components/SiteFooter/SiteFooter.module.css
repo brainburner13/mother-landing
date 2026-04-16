@@ -61,7 +61,7 @@
   width: 2.75rem;
   height: 2.75rem;
   border-radius: var(--radius-sm);
-  background: rgba(255, 250, 240, 0.1);
+  background: rgba(236, 239, 244, 0.1);
   border: 1px solid var(--color-chrome-border);
   color: var(--color-chrome-text);
   transition:
@@ -74,7 +74,7 @@
 .socialLink:hover {
   border-color: var(--color-accent);
   color: var(--color-chrome-hover);
-  background: rgba(196, 92, 46, 0.2);
+  background: rgba(240, 162, 30, 0.2);
   transform: translateY(-1px);
 }
 

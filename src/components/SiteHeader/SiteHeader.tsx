@@ -12,8 +12,10 @@ export function SiteHeader({ brand, nav }: Props) {
     <header className={styles.header}>
       <div className={styles.inner}>
         <a href="#" className={styles.logo}>
-          <span className={styles.logoMark}>{brand.shortName}</span>
-          <span className={styles.logoText}>{brand.name}</span>
+          <span className={styles.logoFrame}>
+            <span className={styles.logoText}>{brand.name}</span>
+            <span className={styles.logoSubtitle}>ВОСК ШУГАРИНГ</span>
+          </span>
         </a>
         <nav className={styles.nav} aria-label="Основное меню">
           <ul className={styles.navList}>

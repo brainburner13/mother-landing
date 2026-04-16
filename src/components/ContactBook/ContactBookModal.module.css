@@ -237,7 +237,7 @@
 .triggerHeroGhost:hover {
   border-color: var(--color-accent);
   color: var(--color-accent-hover);
-  background: rgba(196, 92, 46, 0.07);
+  background: rgba(240, 162, 30, 0.12);
 }
 
 .triggerService {

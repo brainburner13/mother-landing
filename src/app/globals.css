@@ -1,8 +1,8 @@
 @import "../styles/tokens.css";
 
 :root {
-  --font-display-fallback: "Cormorant Garamond", serif;
-  --font-body-fallback: "Mulish", system-ui, sans-serif;
+  --font-display-fallback: "Noto Sans", system-ui, sans-serif;
+  --font-body-fallback: "Noto Sans", system-ui, sans-serif;
 }
 
 html {

@@ -1,12 +1,12 @@
 .hero {
   padding: var(--space-lg) var(--space-md) var(--space-xl);
   background: linear-gradient(
-    165deg,
-    #faf3eb 0%,
-    #f0dcc8 24%,
-    rgba(196, 92, 46, 0.26) 52%,
-    rgba(196, 92, 46, 0.34) 76%,
-    rgba(163, 77, 38, 0.12) 100%
+    160deg,
+    #f6f8fc 0%,
+    #e7edf5 30%,
+    rgba(36, 52, 77, 0.16) 58%,
+    rgba(240, 162, 30, 0.22) 82%,
+    rgba(216, 141, 16, 0.26) 100%
   );
   color: var(--color-text);
 }
