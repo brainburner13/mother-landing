@@ -1,7 +1,10 @@
 import Link from "next/link";
 import type { SiteConfig } from "@/types/site";
 import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
-import { OfficeCarousel, type OfficeSlide } from "@/components/OfficeCarousel/OfficeCarousel";
+import {
+  OfficeCarousel,
+  type OfficeSlide,
+} from "@/components/OfficeCarousel/OfficeCarousel";
 import modalStyles from "@/components/ContactBook/ContactBookModal.module.css";
 import styles from "./Hero.module.css";
 
@@ -44,10 +47,13 @@ export function Hero({ hero, metroLinks, officeSlides }: Props) {
             <Link href={hero.primaryCta.href} className={modalStyles.triggerHeroPrimary}>
               {hero.primaryCta.label}
             </Link>
-            <ContactBookTrigger variant="heroGhost">{hero.secondaryCta.label}</ContactBookTrigger>
+            <ContactBookTrigger variant="heroGhost">
+              {hero.secondaryCta.label}
+            </ContactBookTrigger>
           </div>
         </div>
         <div className={styles.visual}>
+          <p className={styles.visualTitle}>Наши кабинеты</p>
           <OfficeCarousel slides={officeSlides} variant="hero" />
         </div>
       </div>

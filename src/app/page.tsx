@@ -1,3 +1,4 @@
+import logo from "@/assets/image/logo.webp";
 import office1 from "@/assets/image/our_offices/Our_offices_1.webp";
 import office2 from "@/assets/image/our_offices/Our_offices_2.webp";
 import office3 from "@/assets/image/our_offices/Our_offices_3.webp";
@@ -12,7 +13,7 @@ import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
 import { PriceList } from "@/components/PriceList/PriceList";
 import { getSite } from "@/lib/site";
 
-const OFFICE_IMAGES = [office1, office2, office3] as const;
+const OFFICE_IMAGES = [logo, office1, office2, office3] as const;
 
 export default function Home() {
   const site = getSite();

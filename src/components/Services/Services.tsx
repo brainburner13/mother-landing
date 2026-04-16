@@ -2,8 +2,8 @@ import Image, { type StaticImageData } from "next/image";
 import type { ServiceItem, SiteConfig } from "@/types/site";
 import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import cosmetology from "@/assets/image/our_services/cosmetology.webp";
-import eyebrowLamination from "@/assets/image/our_services/eyebrow_lamination.webp";
-import eyelashLamination from "@/assets/image/our_services/eyelash_lamination.webp";
+import eyebrowLamination from "@/assets/image/our_services/eyebrow_lamination.png";
+import eyelashLamination from "@/assets/image/our_services/eyelash_lamination.png";
 import hardwareMassage from "@/assets/image/our_services/hardware_massage.webp";
 import permanentMakeup from "@/assets/image/our_services/permanent_makeup.webp";
 import sugaring from "@/assets/image/our_services/sugaring.webp";
@@ -35,15 +35,16 @@ const SERVICE_IDS_ORDER = [
   "massage",
 ] as const;
 
-const SERVICE_IMAGES_BY_ID: Record<(typeof SERVICE_IDS_ORDER)[number], StaticImageData> = {
-  "epilation-wax": waxing,
-  "epilation-sugar": sugaring,
-  cosmetology,
-  "lamination-lashes": eyelashLamination,
-  "lamination-brows": eyebrowLamination,
-  permanent: permanentMakeup,
-  massage: hardwareMassage,
-};
+const SERVICE_IMAGES_BY_ID: Record<(typeof SERVICE_IDS_ORDER)[number], StaticImageData> =
+  {
+    "epilation-wax": waxing,
+    "epilation-sugar": sugaring,
+    cosmetology,
+    "lamination-lashes": eyelashLamination,
+    "lamination-brows": eyebrowLamination,
+    permanent: permanentMakeup,
+    massage: hardwareMassage,
+  };
 
 function sortServicesLikeDeck(items: ServiceItem[]): ServiceItem[] {
   const rank = new Map<string, number>(SERVICE_IDS_ORDER.map((id, i) => [id, i]));
@@ -81,7 +82,9 @@ export function Services({ data }: Props) {
                 </div>
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{item.title}</h3>
-                  {item.priceFrom ? <p className={styles.price}>{item.priceFrom}</p> : null}
+                  {item.priceFrom ? (
+                    <p className={styles.price}>{item.priceFrom}</p>
+                  ) : null}
                   <p className={styles.desc}>{item.description}</p>
                   <div className={styles.cardActions}>
                     <a href={item.href} className={styles.link}>

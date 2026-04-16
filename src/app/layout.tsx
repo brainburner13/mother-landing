@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Mulish } from "next/font/google";
+import { Mulish, Poiret_One } from "next/font/google";
 import "./globals.css";
 import { ContactBookProvider } from "@/components/ContactBook/ContactBookProvider";
 import { getSite } from "@/lib/site";
 
-const display = Cormorant_Garamond({
+const display = Poiret_One({
   subsets: ["latin", "cyrillic"],
-  weight: ["500", "600", "700"],
+  weight: ["400"],
   variable: "--font-display-fallback",
   display: "swap",
 });
@@ -23,6 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: site.meta.title,
     description: site.meta.description,
+    icons: {
+      icon: "/logo.ico",
+      shortcut: "/logo.ico",
+    },
   };
 }
 
