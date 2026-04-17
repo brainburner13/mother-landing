@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import type { SiteConfig } from "@/types/site";
+import { CopyPhoneLink } from "@/components/CopyPhoneLink/CopyPhoneLink";
 import { SocialIcon } from "@/components/SiteFooter/SocialIcon";
 import styles from "./ContactBookModal.module.css";
 
@@ -102,9 +103,11 @@ export function ContactBookProvider({ contact, social, children }: ProviderProps
             </ul>
             <div className={styles.phoneBlock}>
               <span className={styles.phoneLabel}>Телефон</span>
-              <a href={contact.phoneHref} className={styles.phone}>
-                {contact.phone}
-              </a>
+              <CopyPhoneLink
+                phone={contact.phone}
+                phoneHref={contact.phoneHref}
+                className={styles.phone}
+              />
             </div>
           </div>
         </div>

@@ -1,4 +1,8 @@
+"use client";
+
 import Image, { type StaticImageData } from "next/image";
+import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ServiceItem, SiteConfig } from "@/types/site";
 import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import cosmetology from "@/assets/image/our_services/cosmetology.webp";
@@ -59,6 +63,35 @@ function imageForItem(item: ServiceItem, index: number): StaticImageData {
 
 export function Services({ data }: Props) {
   const items = sortServicesLikeDeck(data.items);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<Array<HTMLLIElement | null>>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const idx = Number(entry.target.getAttribute("data-card-index"));
+          if (Number.isNaN(idx)) return;
+
+          setVisibleCards((prev) => {
+            if (prev.has(idx)) return prev;
+            const next = new Set(prev);
+            next.add(idx);
+            return next;
+          });
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    cardRefs.current.forEach((node) => {
+      if (node) observer.observe(node);
+    });
+
+    return () => observer.disconnect();
+  }, [items.length]);
 
   return (
     <section id="services" className={styles.section} aria-labelledby="services-title">
@@ -69,8 +102,19 @@ export function Services({ data }: Props) {
         <ul className={styles.grid}>
           {items.map((item, index) => {
             const img = imageForItem(item, index);
+            const revealStyle = {
+              "--card-delay": `${index * 55}ms`,
+            } as CSSProperties;
             return (
-              <li key={item.id} className={styles.card}>
+              <li
+                key={item.id}
+                ref={(node) => {
+                  cardRefs.current[index] = node;
+                }}
+                data-card-index={index}
+                className={`${styles.card} ${visibleCards.has(index) ? styles.cardVisible : ""}`}
+                style={revealStyle}
+              >
                 <div className={styles.thumb}>
                   <Image
                     src={img}

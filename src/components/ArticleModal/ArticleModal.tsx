@@ -2,6 +2,7 @@
 
 import { useEffect, useId } from "react";
 import type { NewsItem, SiteConfig } from "@/types/site";
+import { CopyPhoneLink } from "@/components/CopyPhoneLink/CopyPhoneLink";
 import { SocialIcon } from "@/components/SiteFooter/SocialIcon";
 import styles from "./ArticleModal.module.css";
 
@@ -51,7 +52,12 @@ export function ArticleModal({ article, onClose, contact, social }: Props) {
         aria-labelledby={titleId}
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" className={styles.close} onClick={onClose} aria-label="Закрыть">
+        <button
+          type="button"
+          className={styles.close}
+          onClick={onClose}
+          aria-label="Закрыть"
+        >
           ×
         </button>
         <header className={styles.header}>
@@ -71,11 +77,15 @@ export function ArticleModal({ article, onClose, contact, social }: Props) {
         </div>
         <footer className={styles.footer}>
           <p className={styles.footerTitle}>Запись и консультация</p>
-          <p className={styles.footerLead}>Позвоните, напишите в мессенджер или оставьте заявку онлайн.</p>
+          <p className={styles.footerLead}>
+            Позвоните, напишите в мессенджер или оставьте заявку онлайн.
+          </p>
           <p className={styles.schedule}>{contact.schedule}</p>
-          <a href={contact.phoneHref} className={styles.phone}>
-            {contact.phone}
-          </a>
+          <CopyPhoneLink
+            phone={contact.phone}
+            phoneHref={contact.phoneHref}
+            className={styles.phone}
+          />
           <ul className={styles.social}>
             {social.map((s) => (
               <li key={s.href + s.label}>

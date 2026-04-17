@@ -47,6 +47,20 @@
   max-width: 36rem;
 }
 
+.letterWrap {
+  white-space: pre-wrap;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  animation: charReveal 0.08s linear forwards;
+}
+
+.charSpace {
+  width: 0.28em;
+}
+
 .subtitle {
   font-size: var(--text-lead);
   color: var(--color-text-muted);
@@ -89,4 +103,20 @@
   color: var(--color-heading);
   margin-bottom: var(--space-sm);
   text-align: center;
+}
+
+@keyframes charReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    animation: none;
+    opacity: 1;
+  }
 }

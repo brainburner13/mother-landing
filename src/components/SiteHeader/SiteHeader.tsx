@@ -1,13 +1,15 @@
 import type { NavItem, SiteConfig } from "@/types/site";
+import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import { MobileNav } from "./MobileNav";
 import styles from "./SiteHeader.module.css";
 
 type Props = {
   brand: SiteConfig["brand"];
   nav: NavItem[];
+  bookingLabel: string;
 };
 
-export function SiteHeader({ brand, nav }: Props) {
+export function SiteHeader({ brand, nav, bookingLabel }: Props) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -30,6 +32,9 @@ export function SiteHeader({ brand, nav }: Props) {
         </nav>
         <div className={styles.headerActions}>
           <MobileNav nav={nav} />
+        </div>
+        <div className={styles.mobileBooking}>
+          <ContactBookTrigger variant="header">{bookingLabel}</ContactBookTrigger>
         </div>
       </div>
     </header>

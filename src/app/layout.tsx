@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import logo from "@/assets/image/logo.webp";
 import { ContactBookProvider } from "@/components/ContactBook/ContactBookProvider";
 import { getSite } from "@/lib/site";
 
@@ -20,9 +21,33 @@ const body = Noto_Sans({
 
 export async function generateMetadata(): Promise<Metadata> {
   const site = getSite();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
   return {
+    metadataBase: new URL(baseUrl),
     title: site.meta.title,
     description: site.meta.description,
+    openGraph: {
+      title: site.meta.title,
+      description: site.meta.description,
+      type: "website",
+      locale: "ru_RU",
+      siteName: site.brand.name,
+      images: [
+        {
+          url: logo.src,
+          width: logo.width,
+          height: logo.height,
+          alt: site.brand.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: site.meta.title,
+      description: site.meta.description,
+      images: [logo.src],
+    },
     icons: {
       icon: "/logo.ico",
       shortcut: "/logo.ico",

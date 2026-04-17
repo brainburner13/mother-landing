@@ -1,5 +1,6 @@
 import type { SiteConfig } from "@/types/site";
 import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
+import { CopyPhoneLink } from "@/components/CopyPhoneLink/CopyPhoneLink";
 import styles from "./TopBar.module.css";
 
 type Props = {
@@ -13,9 +14,11 @@ export function TopBar({ contact, locations }: Props) {
       <div className={styles.inner}>
         <div className={styles.left}>
           <p className={styles.schedule}>{contact.schedule}</p>
-          <a className={styles.phone} href={contact.phoneHref}>
-            {contact.phone}
-          </a>
+          <CopyPhoneLink
+            phone={contact.phone}
+            phoneHref={contact.phoneHref}
+            className={styles.phone}
+          />
         </div>
         <div className={styles.center}>
           <ContactBookTrigger variant="topBar">{contact.bookingLabel}</ContactBookTrigger>

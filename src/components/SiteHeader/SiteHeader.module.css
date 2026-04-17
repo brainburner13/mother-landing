@@ -23,6 +23,10 @@
   flex-shrink: 0;
 }
 
+.mobileBooking {
+  display: none;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -151,9 +155,9 @@
   border-radius: 1px;
   transform-origin: center;
   transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.25s ease,
-    top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.16s ease,
+    top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Полосы: 2px + зазор 5px + 2px + 5px + 2px = 16px → центр на 7px */
@@ -198,8 +202,8 @@
   overflow: hidden;
   opacity: 0;
   transition:
-    max-height 0.35s ease,
-    opacity 0.25s ease;
+    max-height 0.22s ease,
+    opacity 0.16s ease;
   pointer-events: none;
 }
 
@@ -234,5 +238,33 @@
 
   .mobileWrap {
     display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .mobileBooking {
+    order: 2;
+    display: flex;
+    width: auto;
+    justify-self: center;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .headerActions {
+    order: 3;
+    justify-self: end;
   }
 }

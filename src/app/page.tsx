@@ -31,7 +31,11 @@ export default function Home() {
     <>
       <StickyHeader>
         <TopBar contact={site.contact} locations={site.locations.items} />
-        <SiteHeader brand={site.brand} nav={site.header.nav} />
+        <SiteHeader
+          brand={site.brand}
+          nav={site.header.nav}
+          bookingLabel={site.contact.bookingLabel}
+        />
       </StickyHeader>
       <main>
         <Hero hero={site.hero} metroLinks={metroLinks} officeSlides={officeSlides} />

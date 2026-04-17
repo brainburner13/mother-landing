@@ -99,4 +99,18 @@
   .addressList {
     justify-content: center;
   }
+
+  .center {
+    display: none;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1023px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .center {
+    display: none;
+  }
 }

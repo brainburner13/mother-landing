@@ -1,4 +1,5 @@
 import type { SiteConfig } from "@/types/site";
+import { CopyPhoneLink } from "@/components/CopyPhoneLink/CopyPhoneLink";
 import { SocialIcon } from "./SocialIcon";
 import styles from "./SiteFooter.module.css";
 
@@ -21,9 +22,11 @@ export function SiteFooter({ brand, footer, contact, social }: Props) {
             <p className={styles.brandName}>{brand.name}</p>
             <p className={styles.tagline}>{brand.tagline}</p>
           </div>
-          <a className={styles.phone} href={contact.phoneHref}>
-            {contact.phone}
-          </a>
+          <CopyPhoneLink
+            phone={contact.phone}
+            phoneHref={contact.phoneHref}
+            className={styles.phone}
+          />
           <div className={styles.social}>
             {social.map((s) => (
               <a
