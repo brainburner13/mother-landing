@@ -1,4 +1,7 @@
+"use client";
+
 import type { SiteConfig } from "@/types/site";
+import { motion, useReducedMotion } from "motion/react";
 import styles from "./PriceList.module.css";
 
 type Props = {
@@ -6,31 +9,69 @@ type Props = {
 };
 
 export function PriceList({ data }: Props) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section id="price" className={styles.section} aria-labelledby="price-title">
       <div className={styles.inner}>
         <h2 id="price-title" className={styles.heading}>
           {data.sectionTitle}
         </h2>
-        <div className={styles.groups}>
-          {data.groups.map((group) => (
-            <div key={group.title} className={styles.group}>
+        <motion.div className={styles.groups} initial={false}>
+          {data.groups.map((group, index) => (
+            <motion.div
+              key={group.title}
+              className={styles.group}
+              initial={
+                prefersReducedMotion
+                  ? { opacity: 1, y: 0, height: "auto" }
+                  : { opacity: 0, y: 22, height: 0 }
+              }
+              whileInView={
+                prefersReducedMotion ? undefined : { opacity: 1, y: 0, height: "auto" }
+              }
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.44,
+                ease: [0.2, 0.75, 0.25, 1],
+                delay: (index % 2) * 0.08,
+              }}
+              style={{ overflow: "hidden" }}
+            >
               <h3 className={styles.groupTitle}>{group.title}</h3>
               <table className={styles.table}>
-                <tbody>
-                  {group.rows.map((row) => (
-                    <tr key={`${group.title}-${row.name}`}>
+                <motion.tbody initial={false}>
+                  {group.rows.map((row, rowIndex) => (
+                    <motion.tr
+                      key={`${group.title}-${row.name}`}
+                      initial={
+                        prefersReducedMotion
+                          ? { opacity: 1, y: 0, filter: "none" }
+                          : { opacity: 0, y: 10, filter: "blur(1px)" }
+                      }
+                      whileInView={
+                        prefersReducedMotion
+                          ? undefined
+                          : { opacity: 1, y: 0, filter: "blur(0px)" }
+                      }
+                      viewport={{ once: true, amount: 0.7 }}
+                      transition={{
+                        duration: 0.24,
+                        ease: [0.2, 0.75, 0.25, 1],
+                        delay: 0.12 + (rowIndex + 1) * 0.028,
+                      }}
+                    >
                       <th scope="row" className={styles.name}>
                         {row.name}
                       </th>
                       <td className={styles.price}>{row.price}</td>
-                    </tr>
+                    </motion.tr>
                   ))}
-                </tbody>
+                </motion.tbody>
               </table>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

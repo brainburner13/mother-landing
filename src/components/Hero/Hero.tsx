@@ -62,7 +62,7 @@ export function Hero({ hero, metroLinks, officeSlides }: Props) {
               {renderAnimatedText(hero.intro, 120, 7)}
             </span>
           </p>
-          <div className={styles.subtitle}>
+          <div className={`${styles.subtitle} ${styles.fadeUpDelayed}`}>
             {metroLinks.map((m, i) => (
               <span key={m.href + m.label}>
                 {i > 0 ? <span className={styles.subtitleSep}>, </span> : null}
@@ -77,7 +77,7 @@ export function Hero({ hero, metroLinks, officeSlides }: Props) {
               </span>
             ))}
           </div>
-          <div className={styles.ctas}>
+          <div className={`${styles.ctas} ${styles.fadeUpMoreDelayed}`}>
             <Link href={hero.primaryCta.href} className={modalStyles.triggerHeroPrimary}>
               {hero.primaryCta.label}
             </Link>

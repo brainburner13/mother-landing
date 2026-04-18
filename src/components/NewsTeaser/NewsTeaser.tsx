@@ -1,8 +1,8 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import type { CSSProperties } from "react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
+import { useCallback, useEffect, useState } from "react";
 import type { SiteConfig } from "@/types/site";
 import { ArticleModal } from "@/components/ArticleModal/ArticleModal";
 import articleDepilation from "@/assets/image/articles/depilation.webp";
@@ -30,35 +30,16 @@ const ARTICLE_IMAGES: Record<string, StaticImageData> = {
 
 export function NewsTeaser({ data, contact, social }: Props) {
   const [openId, setOpenId] = useState<string | null>(null);
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
-  const cardRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const idx = Number(entry.target.getAttribute("data-card-index"));
-          if (Number.isNaN(idx)) return;
-
-          setVisibleCards((prev) => {
-            if (prev.has(idx)) return prev;
-            const next = new Set(prev);
-            next.add(idx);
-            return next;
-          });
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    cardRefs.current.forEach((node) => {
-      if (node) observer.observe(node);
-    });
-
-    return () => observer.disconnect();
-  }, [data.items.length]);
+    const media = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
 
   const openArticle = useCallback((id: string) => {
     setOpenId(id);
@@ -76,22 +57,51 @@ export function NewsTeaser({ data, contact, social }: Props) {
         <h2 id="articles-title" className={styles.heading}>
           {data.sectionTitle}
         </h2>
-        <ul className={styles.grid}>
+        <motion.ul className={styles.grid} initial={false}>
           {data.items.map((item, index) => {
             const img = ARTICLE_IMAGES[item.id];
             if (!img) return null;
-            const revealStyle = {
-              "--card-delay": `${index * 60}ms`,
-            } as CSSProperties;
+            const stackLevel = Math.min(index, 4);
+            const deckOffset = index - (data.items.length - 1) / 2;
             return (
-              <li
+              <motion.li
                 key={item.id}
-                ref={(node) => {
-                  cardRefs.current[index] = node;
+                className={styles.card}
+                initial={
+                  prefersReducedMotion
+                    ? { opacity: 1, y: 0, x: 0, rotate: 0, scale: 1, filter: "none" }
+                    : {
+                        opacity: 0,
+                        y: isMobile ? 22 : -54 + stackLevel * 8,
+                        x: isMobile ? 0 : -deckOffset * 120,
+                        rotate: isMobile ? 0 : -deckOffset * 2.8,
+                        scale: isMobile ? 0.985 : 0.95 + stackLevel * 0.01,
+                        filter: isMobile ? "blur(0.6px)" : "blur(1.4px)",
+                      }
+                }
+                whileInView={
+                  prefersReducedMotion
+                    ? undefined
+                    : {
+                        opacity: 1,
+                        y: 0,
+                        x: 0,
+                        rotate: 0,
+                        scale: 1,
+                        filter: "blur(0px)",
+                      }
+                }
+                viewport={{ once: true, amount: isMobile ? 0.15 : 0.35 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 180,
+                  damping: 22,
+                  mass: 0.85,
+                  delay: (index % 3) * 0.08,
                 }}
-                data-card-index={index}
-                className={`${styles.card} ${visibleCards.has(index) ? styles.cardVisible : ""}`}
-                style={revealStyle}
+                style={
+                  prefersReducedMotion ? undefined : { transformOrigin: "50% -90px" }
+                }
               >
                 <button
                   type="button"
@@ -118,10 +128,10 @@ export function NewsTeaser({ data, contact, social }: Props) {
                     <span className={styles.more}>Подробнее…</span>
                   </div>
                 </button>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
       </div>
       {activeArticle ? (
         <ArticleModal

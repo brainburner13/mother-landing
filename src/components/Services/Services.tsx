@@ -1,8 +1,8 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import type { CSSProperties } from "react";
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
 import type { ServiceItem, SiteConfig } from "@/types/site";
 import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
 import cosmetology from "@/assets/image/our_services/cosmetology.webp";
@@ -63,35 +63,16 @@ function imageForItem(item: ServiceItem, index: number): StaticImageData {
 
 export function Services({ data }: Props) {
   const items = sortServicesLikeDeck(data.items);
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
-  const cardRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const idx = Number(entry.target.getAttribute("data-card-index"));
-          if (Number.isNaN(idx)) return;
-
-          setVisibleCards((prev) => {
-            if (prev.has(idx)) return prev;
-            const next = new Set(prev);
-            next.add(idx);
-            return next;
-          });
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    cardRefs.current.forEach((node) => {
-      if (node) observer.observe(node);
-    });
-
-    return () => observer.disconnect();
-  }, [items.length]);
+    const media = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
 
   return (
     <section id="services" className={styles.section} aria-labelledby="services-title">
@@ -99,21 +80,50 @@ export function Services({ data }: Props) {
         <h2 id="services-title" className={styles.heading}>
           {data.sectionTitle}
         </h2>
-        <ul className={styles.grid}>
+        <motion.ul className={styles.grid} initial={false}>
           {items.map((item, index) => {
             const img = imageForItem(item, index);
-            const revealStyle = {
-              "--card-delay": `${index * 55}ms`,
-            } as CSSProperties;
+            const stackLevel = Math.min(index, 4);
+            const deckOffset = index - (items.length - 1) / 2;
             return (
-              <li
+              <motion.li
                 key={item.id}
-                ref={(node) => {
-                  cardRefs.current[index] = node;
+                className={styles.card}
+                initial={
+                  prefersReducedMotion
+                    ? { opacity: 1, y: 0, x: 0, rotate: 0, scale: 1, filter: "none" }
+                    : {
+                        opacity: 0,
+                        y: isMobile ? 22 : -56 + stackLevel * 8,
+                        x: isMobile ? 0 : -deckOffset * 120,
+                        rotate: isMobile ? 0 : -deckOffset * 3.2,
+                        scale: isMobile ? 0.985 : 0.95 + stackLevel * 0.01,
+                        filter: isMobile ? "blur(0.6px)" : "blur(1.4px)",
+                      }
+                }
+                variants={{
+                  hidden: {},
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    x: 0,
+                    rotate: 0,
+                    scale: 1,
+                    filter: "blur(0px)",
+                    transition: {
+                      type: "spring",
+                      stiffness: 180,
+                      damping: 22,
+                      mass: 0.8,
+                      delay: (index % 4) * 0.08,
+                    },
+                  },
                 }}
-                data-card-index={index}
-                className={`${styles.card} ${visibleCards.has(index) ? styles.cardVisible : ""}`}
-                style={revealStyle}
+                whileInView={prefersReducedMotion ? undefined : "visible"}
+                viewport={{ once: true, amount: isMobile ? 0.18 : 0.35 }}
+                style={
+                  prefersReducedMotion ? undefined : { transformOrigin: "50% -90px" }
+                }
               >
                 <div className={styles.thumb}>
                   <Image
@@ -136,10 +146,10 @@ export function Services({ data }: Props) {
                     </a>
                   </div>
                 </div>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
         <div className={styles.sectionCta}>
           <ContactBookTrigger variant="servicesFooter">Записаться</ContactBookTrigger>
         </div>

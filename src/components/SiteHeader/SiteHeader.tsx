@@ -1,5 +1,6 @@
 import type { NavItem, SiteConfig } from "@/types/site";
 import { ContactBookTrigger } from "@/components/ContactBook/ContactBookTrigger";
+import { DesktopNav } from "./DesktopNav";
 import { MobileNav } from "./MobileNav";
 import styles from "./SiteHeader.module.css";
 
@@ -7,9 +8,10 @@ type Props = {
   brand: SiteConfig["brand"];
   nav: NavItem[];
   bookingLabel: string;
+  social: SiteConfig["social"];
 };
 
-export function SiteHeader({ brand, nav, bookingLabel }: Props) {
+export function SiteHeader({ brand, nav, bookingLabel, social }: Props) {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -20,18 +22,10 @@ export function SiteHeader({ brand, nav, bookingLabel }: Props) {
           </span>
         </a>
         <nav className={styles.nav} aria-label="Основное меню">
-          <ul className={styles.navList}>
-            {nav.map((item) => (
-              <li key={item.href + item.label}>
-                <a href={item.href} className={styles.navLink}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <DesktopNav nav={nav} />
         </nav>
         <div className={styles.headerActions}>
-          <MobileNav nav={nav} />
+          <MobileNav nav={nav} social={social} />
         </div>
         <div className={styles.mobileBooking}>
           <ContactBookTrigger variant="header">{bookingLabel}</ContactBookTrigger>

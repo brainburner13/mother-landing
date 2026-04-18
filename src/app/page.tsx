@@ -35,6 +35,7 @@ export default function Home() {
           brand={site.brand}
           nav={site.header.nav}
           bookingLabel={site.contact.bookingLabel}
+          social={site.social}
         />
       </StickyHeader>
       <main>

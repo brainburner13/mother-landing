@@ -6,8 +6,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-md);
+  padding: calc(var(--space-md) + env(safe-area-inset-top)) var(--space-md)
+    calc(var(--space-md) + env(safe-area-inset-bottom));
   animation: fadeIn 0.2s ease;
+  overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -23,7 +25,7 @@
   position: relative;
   width: 100%;
   max-width: 36rem;
-  max-height: min(92vh, 50rem);
+  max-height: min(calc(100dvh - 2.5rem), 50rem);
   display: flex;
   flex-direction: column;
   background: var(--color-modal-bg);
@@ -97,6 +99,27 @@
   overflow-y: auto;
   padding: var(--space-md) var(--space-md) var(--space-lg);
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-accent) rgba(12, 28, 47, 0.2);
+}
+
+.body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.body::-webkit-scrollbar-track {
+  background: rgba(12, 28, 47, 0.12);
+  border-radius: 999px;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background: rgba(240, 162, 30, 0.9);
+  border-radius: 999px;
+  border: 2px solid rgba(12, 28, 47, 0.12);
+}
+
+.body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }
 
 .paragraph {
@@ -186,4 +209,16 @@
   align-self: stretch;
   display: inline-flex;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .backdrop {
+    align-items: flex-start;
+  }
+
+  .dialog {
+    max-height: calc(
+      100dvh - 1.5rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
 }
