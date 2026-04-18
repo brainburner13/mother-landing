@@ -110,10 +110,10 @@ export function MobileNav({ nav, social }: Props) {
             aria-hidden={!open}
             initial={
               prefersReducedMotion
-                ? { opacity: 1, height: "calc(100dvh - 100%)" }
+                ? { opacity: 1, height: "calc(100dvh - 200%)" }
                 : { opacity: 0, height: 0 }
             }
-            animate={{ opacity: 1, height: "calc(100dvh - 100%)" }}
+            animate={{ opacity: 1, height: "calc(100dvh - 200%)" }}
             exit={
               prefersReducedMotion ? { opacity: 0, height: 0 } : { opacity: 0, height: 0 }
             }
