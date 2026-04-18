@@ -24,11 +24,13 @@ export function PriceList({ data }: Props) {
               className={styles.group}
               initial={
                 prefersReducedMotion
-                  ? { opacity: 1, y: 0, height: "auto" }
-                  : { opacity: 0, y: 22, height: 0 }
+                  ? { opacity: 1, y: 0, scaleY: 1, filter: "none" }
+                  : { opacity: 0, y: 22, scaleY: 0.86, filter: "blur(0.8px)" }
               }
               whileInView={
-                prefersReducedMotion ? undefined : { opacity: 1, y: 0, height: "auto" }
+                prefersReducedMotion
+                  ? undefined
+                  : { opacity: 1, y: 0, scaleY: 1, filter: "blur(0px)" }
               }
               viewport={{ once: true, amount: 0.3 }}
               transition={{
@@ -36,7 +38,7 @@ export function PriceList({ data }: Props) {
                 ease: [0.2, 0.75, 0.25, 1],
                 delay: (index % 2) * 0.08,
               }}
-              style={{ overflow: "hidden" }}
+              style={{ overflow: "hidden", transformOrigin: "top center" }}
             >
               <h3 className={styles.groupTitle}>{group.title}</h3>
               <table className={styles.table}>
