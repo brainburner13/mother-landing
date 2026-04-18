@@ -34,6 +34,12 @@ body {
   line-height: var(--line-relaxed);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Без переноса внутри слов (в т.ч. при lang=ru и узких колонках) */
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 main {

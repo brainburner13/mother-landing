@@ -21,27 +21,44 @@ type Props = {
 };
 
 function renderAnimatedText(text: string, startDelayMs: number, stepMs: number) {
-  return text.split("").map((char, index) => {
-    const style = {
-      animationDelay: `${startDelayMs + index * stepMs}ms`,
-    } satisfies CSSProperties;
+  const segments = text.split(/(\s+)/);
+  let charOffset = 0;
 
-    if (char === " ") {
+  return segments.map((segment, segIndex) => {
+    const charSpans = segment.split("").map((char, j) => {
+      const style = {
+        animationDelay: `${startDelayMs + charOffset * stepMs}ms`,
+      } satisfies CSSProperties;
+      charOffset += 1;
+      const key = `${segIndex}-${j}`;
+
+      if (char === " ") {
+        return (
+          <span
+            key={key}
+            className={`${styles.char} ${styles.charSpace}`}
+            style={style}
+            aria-hidden
+          >
+            {" "}
+          </span>
+        );
+      }
+
       return (
-        <span
-          key={`space-${index}`}
-          className={`${styles.char} ${styles.charSpace}`}
-          style={style}
-          aria-hidden
-        >
-          {" "}
+        <span key={key} className={styles.char} style={style} aria-hidden>
+          {char}
         </span>
       );
+    });
+
+    if (/^\s+$/.test(segment)) {
+      return charSpans;
     }
 
     return (
-      <span key={`${char}-${index}`} className={styles.char} style={style} aria-hidden>
-        {char}
+      <span key={`word-${segIndex}`} className={styles.word}>
+        {charSpans}
       </span>
     );
   });

@@ -51,6 +51,11 @@
   white-space: pre-wrap;
 }
 
+/* Слова целиком: буквы — inline-block, иначе перенос ломает слово посередине */
+.word {
+  white-space: nowrap;
+}
+
 .char {
   display: inline-block;
   opacity: 0;
