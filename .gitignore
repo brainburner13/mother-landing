@@ -16,6 +16,7 @@
 # next.js
 /.next/
 /out/
+/landing-out.zip
 
 # production
 /build
